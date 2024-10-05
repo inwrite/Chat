@@ -54,13 +54,14 @@
                     }
                 }
             ?>
-            <span>Username</span>
+            <span>Username:</span>
             <input type="text" name="email" placeholder="" class="box" required>
-            <span>Password</span>
+            <span>Password:</span>
             <input type="password" name="password" placeholder="" class="box" required>
             <input type="submit" name="submit" class="btn" value="start chatting">
             <p>Don't have an account? <a href="index.php">Register now</a></p>
         </form>
     </div>
+    <script src="js/footer.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>

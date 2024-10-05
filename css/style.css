@@ -29,7 +29,9 @@
   html {
     --black-: 0 0 0;
     --white-: 255 255 255;
-    --black--: rgb(var(--black-) / 100%);
+    /* --black--: rgb(var(--black-) / 100%); */
+    --bg-body: 255 255 255;
+    --bg-body-up: rgb(var(--bg-body) / 100%);
     --bg-body-up: rgb(255 255 255);
     --text-primary: var(--gray-950);
     --text-secondary: #7d7d7d;
@@ -74,7 +76,8 @@
   html {
     --black-: 255 255 255;
     --white-: 0 0 0;
-    --bg-body-up: rgb(37 37 37);
+    --bg-body: 37 37 37;
+    --bg-body-up: rgb(var(--bg-body) / 100%);
     --text-primary: var(--gray-100);
     --text-secondary: var(--gray-400);
     --text-tertiary: var(--gray-500);
@@ -106,10 +109,9 @@
     --text-success-: rgb(var(--text-success) / 100%);
     --text-success-bg: rgb(var(--text-success) / 4%);
     --text-success-bg-hover: rgb(var(--text-success) / 8%);
-    --bg-body: 33 33 33;
-    --bg-body-: rgb(var(--bg-body) / 100%);
     --shadow-black: 0 0 0;
     --shadow-black-: rgb(var(--shadow-black) / 12%);
+    --textarea: rgb(31 31 31);
   }
 }
 
@@ -212,6 +214,7 @@ html.dark-theme {
   text-decoration: none;
   font-family: 'poppins', sans-serif;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Apple Color Emoji", "Helvetica Neue", sans-serif;
+  /* font-family: monospace; */
 }
 
 *::-webkit-scrollbar {
@@ -234,6 +237,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-user-select: none;
   font-family: ui-sans-serif, -apple-system, system-ui, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  background: var(--bg-body-up);
 }
 
 
@@ -254,11 +258,13 @@ input {
   line-height: 1.25rem;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
+  background: var(--bg-body-up);
 }
 
 
 .btn,
-.delete-btn {
+.delete-btn,
+header .logout {
   width: 100%;
   display: flex;
   align-items: center;
@@ -279,6 +285,8 @@ input {
   letter-spacing: .5px;
   font-weight: 600;
 }
+
+header .logout {width: max-content;background-color: var(--link-bg);color: var(--link-);}
 
 .btn {
   background-color: var(--link-bg);
@@ -385,8 +393,10 @@ input[type="file"]::before {
   pointer-events: none;
   top: 14px;
   left: 40px;
-  color: #0964b0;
+  /* color: #0964b0; */
   content: "Upload Avatar";
+  /* background-color: var(--link-bg); */
+  color: var(--link-);
 }
 
 input[type="file"][name="update_image"]::before {
@@ -428,6 +438,8 @@ input[type="file"]::file-selector-button {
   padding-right: .5rem;
   border: 1px solid;
   border-color: transparent;
+  /* background-color: var(--link-bg); */
+  /* color: var(--link-); */
 }
 
 /* file upload button hover state */
@@ -468,7 +480,7 @@ input[type="file"]::file-selector-button:active {
 
 .container .users {
   padding: 20px;
-  background: var(--white);
+  background: var(--bg-body-up);
   box-shadow: var(--box-shadow);
   width: 400px;
   border-radius: 5px;
@@ -502,19 +514,9 @@ header .content a {
   gap: .5rem;
 }
 
-header .logout {
-  display: block;
-  background: var(--blue);
-  color: var(--white);
-  padding: 7px 15px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 17px;
-  cursor: pointer;
-}
 
 header .logout:hover {
-  background: var(--dark-blue);
+  background-color: var(--link-bg-hover);
 }
 
 .users .search {
@@ -644,17 +646,17 @@ header .logout:hover {
 }
 
 .update-profile form .flex .inputBox span {
-  text-align: left;
-  display: block;
-  color: var(--text-secondary);
-  font-size: .875rem;
-  margin-bottom: -.7rem;
-  margin-left: .75rem;
-  background: var(--bg-body-up);
-  position: relative;
-  width: fit-content;
-  padding-left: .25rem;
-  padding-right: .25rem;
+  /* text-align: left; */
+  /* display: block; */
+  /* color: var(--text-secondary); */
+  /* font-size: .875rem; */
+  /* margin-bottom: -.7rem; */
+  /* margin-left: .75rem; */
+  /* background: var(--bg-body-up); */
+  /* position: relative; */
+  /* width: fit-content; */
+  /* padding-left: .25rem; */
+  /* padding-right: .25rem; */
 }
 
 .update-profile form .flex .inputBox .box {
@@ -670,7 +672,7 @@ header .logout:hover {
   padding: 18px 30px;
   position: relative;
   z-index: 1;
-  background: linear-gradient(180deg, #ffffff, transparent);
+  background: linear-gradient(180deg, var(--bg-body-up), transparent););
 }
 
 .chat-area header .back-icon img {
@@ -688,9 +690,8 @@ header .logout:hover {
 
 .chat-box {
   position: relative;
-  height: calc(100% - 1rem - 45px);
+  height: calc(100% - 1rem - 48px);
   min-height: 420px;
-  /* max-height: 420px; */
   overflow-y: auto;
   padding: 10px 30px 20px 30px;
 }
@@ -723,7 +724,7 @@ header .logout:hover {
   margin: 0rem;
   margin-top: 5rem;
   margin-bottom: 5rem;
-  background: var(--white);
+  background: var(--bg-body-up);
 }
 
 .chat-box .chat p {
@@ -953,7 +954,7 @@ header .logout:hover {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: var(--white);
+  background: var(--bg-body-up);
   max-width: 768px;
   left: 0;
   right: 0;
@@ -972,6 +973,7 @@ header .logout:hover {
 .form-container form {
   box-shadow: none;
   border: none;
+  position: relative;
 }
 
 
@@ -985,7 +987,7 @@ header .logout:hover {
   background: var(--textarea);
   border-radius: 26px;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   display: flex;
   width: 100%;
   min-height: 52px;
@@ -1030,8 +1032,97 @@ header .logout:hover {
   z-index: -1;
   transform: rotateX(180deg);
 }
+.framer-1dbykho-container > div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+}
+.framer-1dbykho-container > div div:nth-child(8) {
+    position: absolute;
+    inset: 0;
+    border-radius: 0px;
+    pointer-events: none;
+}
+.framer-1dbykho-container > div div:nth-child(1) {
+    z-index: 1;
+    backdrop-filter: blur(0.078125px);
+    -webkit-backdrop-filter: blur(0.078125px);
+    mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 0%, rgb(var(--bg-body) / 100%) 12.5%, rgb(var(--bg-body) / 100%) 25%, rgb(var(--bg-body) / 0%) 37.5%);
+    -webkit-mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 0%, rgb(var(--bg-body) / 100%) 12.5%, rgb(var(--bg-body) / 100%) 25%, rgb(var(--bg-body) / 0%) 37.5%);
 
+}
+.framer-1dbykho-container > div div:nth-child(2) {
+    z-index: 2;
+    backdrop-filter: blur(0.15625px);
+    -webkit-backdrop-filter: blur(0.15625px);
+    mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 12.5%, rgb(var(--bg-body) / 100%) 25%, rgb(var(--bg-body) / 100%) 37.5%, rgb(var(--bg-body) / 0%) 50%);
+    -webkit-mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 12.5%, rgb(var(--bg-body) / 100%) 25%, rgb(var(--bg-body) / 100%) 37.5%, rgb(var(--bg-body) / 0%) 50%);
+}
+.framer-1dbykho-container > div div:nth-child(3) {
+    z-index: 3;
+    backdrop-filter: blur(0.3125px);
+    -webkit-backdrop-filter: blur(0.3125px);
+    mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 25%, rgb(var(--bg-body) / 100%) 37.5%, rgb(var(--bg-body) / 100%) 50%, rgb(var(--bg-body) / 0%) 62.5%);
+    -webkit-mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 25%, rgb(var(--bg-body) / 100%) 37.5%, rgb(var(--bg-body) / 100%) 50%, rgb(var(--bg-body) / 0%) 62.5%);
+}
+.framer-1dbykho-container > div div:nth-child(4) {
+    z-index: 4;
+    backdrop-filter: blur(0.625px);
+    -webkit-backdrop-filter: blur(0.625px);
+    mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 37.5%, rgb(var(--bg-body) / 100%) 50%, rgb(var(--bg-body) / 100%) 62.5%, rgb(var(--bg-body) / 0%) 75%);
+    -webkit-mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 37.5%, rgb(var(--bg-body) / 100%) 50%, rgb(var(--bg-body) / 100%) 62.5%, rgb(var(--bg-body) / 0%) 75%);
+}
+.framer-1dbykho-container > div div:nth-child(5) {
+    z-index: 5;
+    backdrop-filter: blur(1.25px);
+    -webkit-backdrop-filter: blur(1.25px);
+    mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 50%, rgb(var(--bg-body) / 100%) 62.5%, rgb(var(--bg-body) / 100%) 75%, rgb(var(--bg-body) / 0%) 87.5%);
+    -webkit-mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 50%, rgb(var(--bg-body) / 100%) 62.5%, rgb(var(--bg-body) / 100%) 75%, rgb(var(--bg-body) / 0%) 87.5%);
+}
+.framer-1dbykho-container > div div:nth-child(6) {
+    z-index: 6;
+    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(2.5px);
+    mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 62.5%, rgb(var(--bg-body) / 100%) 75%, rgb(var(--bg-body) / 100%) 87.5%, rgb(var(--bg-body) / 0%) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 62.5%, rgb(var(--bg-body) / 100%) 75%, rgb(var(--bg-body) / 100%) 87.5%, rgb(var(--bg-body) / 0%) 100%);
+}
+.framer-1dbykho-container > div div:nth-child(7) {
+    z-index: 7;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 75%, rgb(var(--bg-body) / 100%) 87.5%, rgb(var(--bg-body) / 100%) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 75%, rgb(var(--bg-body) / 100%) 87.5%, rgb(var(--bg-body) / 100%) 100%);
+}
+.framer-1dbykho-container > div div:nth-child(8) {
+    z-index: 8;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 87.5%, rgb(var(--bg-body) / 100%) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgb(var(--bg-body) / 0%) 87.5%, rgb(var(--bg-body) / 100%) 100%);
+}
 
+form span {
+    /* position: absolute; */
+    /* left: 0; */
+    /* margin-left: 36px; */
+    /* margin-top: -13px; */
+    /* font-size: 14px; */
+    /* color: var(--text-secondary); */
+    /* background-color: var(--bg-body-up); */
+    /* padding: 0px 6px; */
+    text-align: left;
+    display: block;
+    color: var(--text-secondary);
+    font-size: .875rem;
+    margin-bottom: -.7rem;
+    margin-left: .75rem;
+    background: var(--bg-body-up);
+    position: relative;
+    width: fit-content;
+    padding-left: .25rem;
+    padding-right: .25rem;
+}
 
 a.back-icon {
   display: flex;
@@ -1066,25 +1157,3 @@ a.back-icon svg {
   font-size: .875rem;
 }
 
-.form-container span {
-  text-align: left;
-  display: block;
-  color: var(--text-secondary);
-  font-size: .875rem;
-  margin-bottom: -.7rem;
-  margin-left: .75rem;
-  background: var(--bg-body-up);
-  position: relative;
-  width: fit-content;
-  padding-left: .25rem;
-  padding-right: .25rem;
-}
-
-.chat p {
-  font-size: 1rem;
-  color: var(--text-primary);
-}
-
-.active_now {
-  color: var(--text-success-) !important;
-}

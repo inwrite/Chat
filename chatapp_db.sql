@@ -1,89 +1,39 @@
--- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Feb 18, 2021 at 11:44 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.26
-
+-- Устанавливаем SQL_MODE и начинаем транзакцию
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
+-- Устанавливаем кодировку
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `chatapp_db`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `messages`
---
-
+-- Создаем таблицу `messages`
 CREATE TABLE `messages` (
-  `msg_id` int(11) NOT NULL,
-  `incoming_msg_id` int(255) NOT NULL,
-  `outgoing_msg_id` int(255) NOT NULL,
-  `msg` varchar(1000) NOT NULL
+  `msg_id` int(11) NOT NULL AUTO_INCREMENT,
+  `incoming_msg_id` varchar(300) NOT NULL,
+  `outgoing_msg_id` varchar(300) NOT NULL,
+  `msg` varchar(2000) NOT NULL,
+  `msg_img` varchar(500) DEFAULT NULL, -- Сообщение может не содержать изображение
+  PRIMARY KEY (`msg_id`) -- Устанавливаем первичный ключ для msg_id
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user_form`
---
-
+-- Создаем таблицу `user_form`
 CREATE TABLE `user_form` (
-  `user_id` int(11) NOT NULL,
-  `unique_id` int(255) NOT NULL,
-  `fname` varchar(255) NOT NULL,
-  `lname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL, -- Ограничиваем имя до 100 символов
+  `email` varchar(150) NOT NULL, -- Ограничиваем email до 150 символов
+  `password` varchar(255) NOT NULL, -- Ограничиваем пароль до 255 символов для хешей
+  `img` varchar(300) DEFAULT NULL, -- Картинка может быть NULL
+  `status` varchar(300) DEFAULT 'offline', -- Статус по умолчанию
+  PRIMARY KEY (`user_id`), -- Устанавливаем первичный ключ
+  UNIQUE KEY `email` (`email`) -- Устанавливаем уникальность email
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `messages`
---
-ALTER TABLE `messages`
-  ADD PRIMARY KEY (`msg_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `messages`
---
-ALTER TABLE `messages`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+-- Завершаем транзакцию
 COMMIT;
 
+-- Восстанавливаем настройки
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -64,5 +64,6 @@
         </section>
     </div>
     <script src="js/home.js?v=<?php echo time(); ?>"></script>
+    <script src="js/footer.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>

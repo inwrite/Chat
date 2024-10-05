@@ -128,10 +128,10 @@
                     }
                 }
             ?>
-            <span>Username</span>    
+            <span>Username:</span>    
             <input type="text" name="name" placeholder="" class="box" required>
             <input type="hidden" name="email" placeholder="enter email" class="box" required>
-            <span>Password</span> 
+            <span>Password:</span> 
             <input type="password" name="password" placeholder="" class="box" required>
             <input type="hidden" name="cpassword" placeholder="confirm password" class="box" required>
             <input type="file" name="image" class="box" accept="image/*">
@@ -154,6 +154,7 @@
             cpasswordInput.value = passwordInput.value;
         });
     </script>
+    <script src="js/footer.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>
 
