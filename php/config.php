@@ -1,4 +1,4 @@
 <?php 
-    $conn = mysqli_connect("localhost", "zaza41rus_test", "ZAZA41pass", "zaza41rus_test") 
+    $conn = mysqli_connect("localhost", "User_name", "Password", "DataBase") 
     or die('connection failed');
 ?>
