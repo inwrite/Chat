@@ -1,1 +1,1 @@
-Chat - PHP/JS/MySQL
+inChat - PHP/JS/MySQL
